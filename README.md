@@ -1,8 +1,44 @@
 # tiffresize
 
-1. Tried imagemagick, it can't read the tiffs
+A program to batch convert git TIF images into smaller (2560 pixel wide) but high-quality JPG images.
+
+## Running
+
+You can build an executable jar with:
+
+```bash
+sbt assembly
+```
+
+The output from that command will point you at the executable jar.
+
+### Convert a single file
+
+```bash
+java -Xmx4g -jar tiffresize.jar [TIFF] [JPG]
+
+# Example
+java -Xmx4g -jar tiffresize.jar path/to/StaM_0803_CameraSled_19910722_00_34_40.TIF newpath/to/StaM_0803_CameraSled_19910722_00_34_40.jpg
+
+```
+
+
+### Convert a directory of files
+
+```bash
+java -Xmx4g -jar [TIFF Directory] [JPG Directory]
+
+# Example
+java -Xmx4g -jar path/to/tiffs newpath/to/jpgs
+
+```
+
+## What has gone before
+1. Tried imagemagick, it can't read the tiffs.
 2. Tried [OpenIMAJ](http://www.openimaj.org/) - It did not work. Throws `java.io.IOException: Resetting to invalid mark`
-3. Using JAI, seems to work fine
+3. Looked at [imglib2](https://github.com/imglib/imglib2) - Not sure how to do _anything_ with it. The docs needs some love.
+4. [ifranview](http://www.irfanview.com/ works but generates 25MB JPG ... WTF?
+5. Using [JAI](http://www.oracle.com/technetwork/java/javase/tech/jai-142803.html) and [imgscalr](https://github.com/thebuzzmedia/imgscalr), seems to work fine
 
 
 This project is built using [SBT](http://www.scala-sbt.org/)
