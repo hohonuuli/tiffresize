@@ -37,7 +37,7 @@ java -Xmx4g -jar path/to/tiffs newpath/to/jpgs
 1. Tried imagemagick, it can't read the tiffs.
 2. Tried [OpenIMAJ](http://www.openimaj.org/) - It did not work. Throws `java.io.IOException: Resetting to invalid mark`
 3. Looked at [imglib2](https://github.com/imglib/imglib2) - Not sure how to do _anything_ with it. The docs needs some love.
-4. [ifranview](http://www.irfanview.com/ works but generates 25MB JPG ... WTF?
+4. [ifranview](http://www.irfanview.com/) works but generates 25MB JPG ... WTF?
 5. Using [JAI](http://www.oracle.com/technetwork/java/javase/tech/jai-142803.html) and [imgscalr](https://github.com/thebuzzmedia/imgscalr), seems to work fine
 
 
