@@ -1,6 +1,6 @@
 import java.io.File
-
 import org.mbari.smith.tiffresize.{ TiffReader, JpegWriter }
+import scala.util.Try
 
 object Main extends App {
   val src = new File(args(0))
@@ -13,7 +13,9 @@ object Main extends App {
       uf.endsWith(".TIF") || uf.endsWith(".TIFF")
     }
 
-    val files = src.listFiles().filter(isTiff)
+    val files = src.listFiles()
+      .filter(isTiff)
+      .sortBy(_.getAbsoluteFile().getName())
 
     if (!target.exists()) {
       target.mkdirs()
@@ -25,7 +27,7 @@ object Main extends App {
       val simpleName = n.substring(0, i)
       val t = new File(target, s"$simpleName.jpg")
       print(s"Converting $s to $t ... ")
-      val ok = JpegWriter(TiffReader(s.getAbsolutePath), new File(t.getAbsolutePath))
+      val ok = Try(JpegWriter(TiffReader(s.getAbsolutePath), new File(t.getAbsolutePath))).getOrElse(false)
       if (ok) {
         println("success")
       } else {
