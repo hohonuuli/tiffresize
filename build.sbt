@@ -8,7 +8,7 @@ name := "tiffresize"
 
 version in ThisBuild := "1.0-SNAPSHOT"
 
-scalaVersion in ThisBuild := "2.11.7"
+scalaVersion in ThisBuild := "2.11.8"
 
 // https://tpolecat.github.io/2014/04/11/scalac-flags.html
 scalacOptions in ThisBuild ++= Seq(
@@ -24,7 +24,6 @@ scalacOptions in ThisBuild ++= Seq(
   "-Yno-adapted-args",
   "-Ywarn-dead-code",        // N.B. doesn't work well with the ??? hole
   "-Ywarn-numeric-widen",
-  "-Ywarn-value-discard",
   "-Xfuture")
   //"-Ywarn-unused-import")     // 2.11 only. Really SLOW!!
 
@@ -36,14 +35,15 @@ updateOptions := updateOptions.value.withCachedResolution(true)
 
 // Add SLF4J, Logback and testing libs
 libraryDependencies ++= {
-  val slf4jVersion = "1.7.10"
-  val logbackVersion = "1.1.2"
+  val slf4jVersion = "1.7.21"
+  val logbackVersion = "1.1.7"
   val imglib2Version = "2.2.1"
   val jaiVersion = "1.1.3"
   val openimajVersion = "1.3.1"
   Seq(
     "ch.qos.logback" % "logback-classic" % logbackVersion,
     "ch.qos.logback" % "logback-core" % logbackVersion,
+    "io.reactivex" %% "rxscala" % "0.26.2",
     "javax.media.jai" % "com.springsource.javax.media.jai.core" % jaiVersion,
     "javax.media.jai" % "com.springsource.javax.media.jai.codec" % jaiVersion,
     "junit" % "junit" % "4.12" % "test",
@@ -51,7 +51,7 @@ libraryDependencies ++= {
     //"org.openimaj" % "image-processing" % openimajVersion,
     "org.imgscalr" % "imgscalr-lib" % "4.2",
     "org.mbari" % "mbarix4j" % "1.9.2",
-    "org.scalatest" %% "scalatest" % "2.2.4" % "test",
+    "org.scalatest" %% "scalatest" % "3.0.0" % "test",
     "org.slf4j" % "log4j-over-slf4j" % slf4jVersion,
     "org.slf4j" % "slf4j-api" % slf4jVersion)
 }
