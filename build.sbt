@@ -10,6 +10,8 @@ version in ThisBuild := "1.0-SNAPSHOT"
 
 scalaVersion in ThisBuild := "2.11.8"
 
+mainClass in assembly := Some("MainRxFast")
+
 // https://tpolecat.github.io/2014/04/11/scalac-flags.html
 scalacOptions in ThisBuild ++= Seq(
   "-deprecation",

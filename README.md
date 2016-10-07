@@ -26,10 +26,10 @@ java -Xmx4g -jar tiffresize.jar path/to/StaM_0803_CameraSled_19910722_00_34_40.T
 ### Convert a directory of files
 
 ```bash
-java -Xmx4g -jar [TIFF Directory] [JPG Directory]
+java -Xmx4g -jar tiffresize.jar [TIFF Directory] [JPG Directory]
 
 # Example
-java -Xmx4g -jar path/to/tiffs newpath/to/jpgs
+java -Xmx4g -jar tiffresize.jar path/to/tiffs newpath/to/jpgs
 
 ```
 

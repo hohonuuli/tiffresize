@@ -8,14 +8,9 @@ object Main extends App {
 
   if (src.isDirectory) {
 
-    def isTiff(f: File): Boolean = {
-      val uf = f.getAbsolutePath.toUpperCase
-      uf.endsWith(".TIF") || uf.endsWith(".TIFF")
-    }
-
     val files = src.listFiles()
-      .filter(isTiff)
-      .sortBy(_.getAbsoluteFile().getName())
+      .filter(Functions.isTiff)
+      .sortBy(_.getAbsoluteFile.getName())
 
     if (!target.exists()) {
       target.mkdirs()
