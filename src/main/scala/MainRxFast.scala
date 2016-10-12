@@ -111,6 +111,7 @@ object MainRxFast {
         case None => retry(fi, readSubject, msg)
         case Some(img) =>
           JpegWriter.write(img, t)
+          completedCount.getAndIncrement()
           println(s"$msg SUCCESS!")
       }
     } catch {
